@@ -91,9 +91,9 @@ class CanViewPermission extends AbstractCanViewPermission
             return $obj;
         }
         $obj['nodes'] = $filteredList;
-        $edges = [];
+        $edges = new ArrayList();
         foreach ($filteredList as $record) {
-            $edges[] = ['node' => $record];
+            $edges->push($record);
         }
         $obj['edges'] = $edges;
 
