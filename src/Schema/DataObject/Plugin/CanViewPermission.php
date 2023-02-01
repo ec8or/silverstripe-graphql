@@ -10,6 +10,7 @@ use SilverStripe\GraphQL\QueryHandler\UserContextProvider;
 use SilverStripe\ORM\ArrayLib;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\Filterable;
+use SilverStripe\ORM\DataList;
 use InvalidArgumentException;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\View\ArrayData;
