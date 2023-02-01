@@ -125,17 +125,24 @@ class CanViewPermission extends AbstractCanViewPermission
     {
         $member = UserContextProvider::get($context);
         $excludes = [];
+        $includes = [];
 
         foreach ($obj as $record) {
             if (ClassInfo::hasMethod($record, 'canView') && !$record->canView($member)) {
                 $excludes[] = $record->ID;
+            } else {
+                $includes[] = $record->ID;                
             }
         }
 
         if (!empty($excludes)) {
-            return $obj->exclude(['ID' => $excludes]);
+            if (!empty($includes)) {
+                $obj = $obj->filter(['ID' => $includes]);
+            } else {
+                return new Datalist;
+            }
+            return $obj;
         }
-
         return $obj;
     }
 }
